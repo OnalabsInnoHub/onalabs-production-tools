@@ -80,12 +80,12 @@ Given the fact that the Onavital Flashing Tool includes user input, it is possib
 | 6         | Error encountered during argument parsing.                                                |
 | 7         | Difficulty in transforming the parsed object into a dictionary.                           |
 | 8         | Error when interaction by GET method with API.                                            | 
-| 9         | Error when interaction by POST method with API.                                           |
-| 10        | Difficulty in creating URLs that interact with the APIs.                                  |
+| 9         | Error when interaction by POST method with API. Possible causes: there already exists a device with the same serial number.                                           |
+| 10        | Difficulty in creating URLs that interact with the APIs. Possible causes are: there already exists the registration code, the organization does not exist.                                 |
 | 11        | Difficulty in log in.                                                                     |
 | 12        | Error to get a list of the organizations available.                                       | 
 | 13        | Error to retrieve the templates related to registration codes.                            | 
 | 14        | Error to retrieve the templates related to ONASPORT devices.                              | 
 | 15        | Difficulty in posting a registration code and/or a device.                                | 
-| 16         | Error encountered while executing the main logic flow.                                   | 
+| 16        | Error encountered while executing the main logic flow.                                   | 
 

@@ -74,6 +74,7 @@ def log_to_json(data, filepath):
         with open(filepath, 'a') as file:
             json.dump(data, file)
             file.write('\n')
+        generate_json(data, filepath)
     except Exception as e:
         EXECUTION_STATUS = 2
 
@@ -93,7 +94,7 @@ def manage_data_json(data, filepath):
     try:
         filename = format_filename(data)
         filepath = os.path.join(filepath, filename)
-        generate_json(data, filepath)
+        log_to_json(data, filepath)
         return filepath
     except Exception as e:
         EXECUTION_STATUS = 3
@@ -104,7 +105,7 @@ def generate_json(data, filepath):
     This function generates a json file from given data.
 
     Parameters:
-    data (dict): A dictionary containing the data to be written to the CSV file.
+    data (dict): A dictionary containing the data to be written to the json file.
     filepath (str): The path where the json file will be created.
 
     Returns:
@@ -179,7 +180,7 @@ def parse_arguments():
         parser.add_argument("-rc", "--RegistrationCode", help="Registration Code to which the device will be assigned.", required=True, type=str)
         parser.add_argument("-description", "--Description", help="Advertising name of the device that will appear as a description in BioT.", required=True, type=str)
         parser.add_argument("-version", "--Version", help="Version of the ONASPORT device.", required=True, type=str)
-        parser.add_argument("-output", "--OutputDirectory", help="Directory where the traceability file is stored after completion.", default=None, type=str)
+        parser.add_argument("-output", "--OutputDirectory", help="Directory where the traceability file is stored after completion.", required=True, type=str)
 
         # Parse the arguments - Create parsed object
         args = parser.parse_args()
@@ -295,7 +296,6 @@ def define_apis(username, password, environment):
         api_post_onasport_device = "{}/device/v2/devices".format(base_url)
         signin()
     except Exception as e:
-        print(e)
         EXECUTION_STATUS = 10
         return None
 
